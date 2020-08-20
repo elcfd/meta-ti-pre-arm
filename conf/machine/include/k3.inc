@@ -34,9 +34,8 @@ MACHINE_FEATURES = "kernel26 apm usbgadget usbhost vfat ext2 screen alsa etherne
 
 IMAGE_FSTYPES += "tar.xz wic.xz"
 
-# Please note that booting K3 platform also requires
-# tiboot3.bin and sysfw.itb, which are provided by meta-arago
-# u-boot-k3-r5 and ti-sci-fw recipes
-IMAGE_BOOT_FILES ?= "${SPL_BINARY} u-boot.${UBOOT_SUFFIX}"
-WKS_FILE ?= "sdimage-3part.wks"
-do_image_wic[depends] += "u-boot:do_deploy"
+IMAGE_BOOT_FILES ?= "${SPL_BINARY} u-boot.${UBOOT_SUFFIX} tiboot3.bin sysfw.itb"
+WKS_FILE ?= "sdimage-2part.wks"
+do_image_wic[depends] += "virtual/bootloader:do_deploy"
+do_image_wic[mcdepends] += "mc::k3r5:virtual/bootloader:do_deploy mc::k3r5:ti-sci-fw:do_deploy"
+do_image_tar[mcdepends] += "mc::k3r5:virtual/bootloader:do_deploy mc::k3r5:ti-sci-fw:do_deploy"
