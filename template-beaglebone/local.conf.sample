@@ -271,6 +271,7 @@ CONF_VERSION = "1"
 IMAGE_FSTYPES_append = " wic.bmap"
 
 CORE_IMAGE_EXTRA_INSTALL_append = " kernel-modules kernel-devicetree"
+IMAGE_FEATURES_append = " ssh-server-dropbear"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
