@@ -1,0 +1,1 @@
+TEMPLATECONF=../meta-ti/template-beaglebone source poky/oe-init-build-env
